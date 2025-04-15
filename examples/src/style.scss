@@ -1,0 +1,362 @@
+/**
+ * GHColors theme by Avi Aryan (http://aviaryan.in)
+ * Inspired by Github syntax coloring
+ */
+
+code[class*='language-'],
+pre[class*='language-'] {
+  color: #393a34;
+  font-family: 'Consolas', 'Bitstream Vera Sans Mono', 'Courier New', Courier,
+    monospace;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  font-size: 0.95em;
+  line-height: 1.2em;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+pre[class*='language-']::-moz-selection,
+pre[class*='language-'] ::-moz-selection,
+code[class*='language-']::-moz-selection,
+code[class*='language-'] ::-moz-selection {
+  background: #b3d4fc;
+}
+
+pre[class*='language-']::selection,
+pre[class*='language-'] ::selection,
+code[class*='language-']::selection,
+code[class*='language-'] ::selection {
+  background: #b3d4fc;
+}
+
+/* Code blocks */
+
+pre[class*='language-'] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  border: 1px solid #dddddd;
+  background-color: white;
+}
+
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+}
+
+/* Inline code */
+
+:not(pre) > code[class*='language-'] {
+  padding: 0.2em;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  background: #f8f8f8;
+  border: 1px solid #dddddd;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #999988;
+  font-style: italic;
+}
+
+.token.namespace {
+  opacity: 0.7;
+}
+
+.token.string,
+.token.attr-value {
+  color: #e3116c;
+}
+
+.token.punctuation,
+.token.operator {
+  color: #3bf5d4;
+  /* no highlight */
+}
+
+.token.entity,
+.token.url,
+.token.symbol,
+.token.number,
+.token.boolean,
+.token.variable,
+.token.constant,
+.token.property,
+.token.regex,
+.token.inserted {
+  color: #36acaa;
+}
+
+.token.atrule,
+.token.keyword,
+.token.attr-name,
+.language-autohotkey .token.selector {
+  color: #00a4db;
+}
+
+.token.function,
+.token.deleted,
+.language-autohotkey .token.tag {
+  color: #069071;
+}
+
+.token.tag,
+.token.selector,
+.language-autohotkey .token.keyword {
+  color: #ff9292;
+}
+
+.token.important,
+.token.function,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #262831;
+}
+body.light {
+  background-color: #eee;
+
+  .radial {
+    background: linear-gradient(180deg, #dab 0%, #eee 100%);
+    position: absolute;
+    width: 100%;
+    height: 600px;
+    left: 0;
+    z-index: -1;
+  }
+  .banner p {
+    color: #444;
+  }
+  .options {
+    color: #444;
+  }
+}
+
+.options {
+  margin-top: 4em;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2em;
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  color: #eee;
+}
+
+.select {
+  select {
+    border-radius: 50px;
+    padding: 4px 12px;
+    border: 2px solid #125dec;
+    background: white;
+  }
+}
+
+.react-diff-viewer-example {
+  a {
+    color: #125dec;
+    text-decoration: none;
+  }
+
+  .banner {
+    padding: 70px 15px;
+    text-align: center;
+
+    .img-container {
+      text-align: center;
+      margin: 100px auto 60px;
+      max-width: 700px;
+
+      img {
+        width: 100%;
+
+        &.mobile {
+          display: none;
+        }
+      }
+    }
+
+    .cta {
+      margin-top: 60px;
+
+      a {
+        &:last-child {
+          button {
+            margin-right: 0;
+          }
+        }
+      }
+
+      button {
+        font-size: 14px;
+        background: #125dec;
+        border: none;
+        cursor: pointer;
+
+        &:focus {
+          background: #125dec;
+        }
+      }
+    }
+
+    p {
+      max-width: 700px;
+      font-size: 18px;
+      margin: 0 auto;
+      color: #fff;
+    }
+  }
+
+  .controls {
+    margin: 50px 15px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    label {
+      margin-left: 30px;
+    }
+
+    select {
+      background-color: transparent;
+      padding: 5px 15px;
+      border-radius: 4px;
+      border: 2px solid #ddd;
+    }
+  }
+
+  .radial {
+    background: linear-gradient(180deg, #363946 0%, #262931 100%);
+    position: absolute;
+    width: 100%;
+    height: 600px;
+    left: 0;
+    z-index: -1;
+  }
+
+  .diff-viewer {
+    max-width: 90%;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    box-shadow: 0 0 30px #1c1e25;
+
+    a {
+      color: inherit;
+    }
+  }
+
+  footer {
+    margin: 40px 0;
+    color: #fff;
+    text-align: center;
+  }
+}
+
+@media (max-width: 1023px) {
+  .react-diff-viewer-example {
+    .banner {
+      .img-container {
+        img {
+          width: 80%;
+        }
+      }
+    }
+
+    p {
+      font-size: 16px;
+    }
+  }
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-bottom: 0;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #125dec;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #125dec;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
