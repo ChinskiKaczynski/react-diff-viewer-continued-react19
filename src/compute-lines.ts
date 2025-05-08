@@ -86,23 +86,27 @@ const computeDiff = (
     left: [],
     right: [],
   };
+  
+  // Ensure left and right arrays are initialized
+  if (!computedDiff.left) computedDiff.left = [];
+  if (!computedDiff.right) computedDiff.right = [];
   diffArray.forEach(({ added, removed, value }): DiffInformation => {
     const diffInformation: DiffInformation = {};
     if (added) {
       diffInformation.type = DiffType.ADDED;
       diffInformation.value = value;
-      computedDiff.right.push(diffInformation);
+      if (computedDiff.right) computedDiff.right.push(diffInformation);
     }
     if (removed) {
       diffInformation.type = DiffType.REMOVED;
       diffInformation.value = value;
-      computedDiff.left.push(diffInformation);
+      if (computedDiff.left) computedDiff.left.push(diffInformation);
     }
     if (!removed && !added) {
       diffInformation.type = DiffType.DEFAULT;
       diffInformation.value = value;
-      computedDiff.right.push(diffInformation);
-      computedDiff.left.push(diffInformation);
+      if (computedDiff.right) computedDiff.right.push(diffInformation);
+      if (computedDiff.left) computedDiff.left.push(diffInformation);
     }
     return diffInformation;
   });
@@ -161,16 +165,19 @@ const computeLineInformation = (
     evaluateOnlyFirstLine?: boolean,
   ): LineInformation[] => {
     const lines = constructLines(value);
+    
+    // Create a type-safe array to hold the results
+    const result: LineInformation[] = [];
 
     return lines
-      .map((line: string, lineIndex): LineInformation => {
+      .map((line: string, lineIndex): LineInformation | null => {
         const left: DiffInformation = {};
         const right: DiffInformation = {};
         if (
           ignoreDiffIndexes.includes(`${diffIndex}-${lineIndex}`) ||
           (evaluateOnlyFirstLine && lineIndex !== 0)
         ) {
-          return undefined;
+          return null;
         }
         if (added || removed) {
           let countAsChange = true;
@@ -195,11 +202,12 @@ const computeLineInformation = (
                   true,
                 );
 
-                const {
-                  value: rightValue,
-                  lineNumber,
-                  type,
-                } = nextDiffLineInfo[0].right;
+                const rightInfo = nextDiffLineInfo[0].right;
+                if (!rightInfo) return null;
+                
+                const rightValue = rightInfo.value;
+                const lineNumber = rightInfo.lineNumber;
+                const type = rightInfo.type;
 
                 // When identified as modification, push the next diff to ignore
                 // list as the next value will be added in this line computation as
@@ -267,7 +275,7 @@ const computeLineInformation = (
         }
         return { right, left };
       })
-      .filter(Boolean);
+      .filter((item): item is LineInformation => item !== null);
   };
 
   diffArray.forEach(({ added, removed, value }: diff.Change, index): void => {

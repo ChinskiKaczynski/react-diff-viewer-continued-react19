@@ -9,13 +9,13 @@
     "isolatedModules": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "target": "es2015",
+    "target": "es2020",
     "declaration": true,
     "downlevelIteration": true,
-    "lib": ["es2017", "dom"],
-    "types": ["node"],
+    "lib": ["esnext", "dom"],
+    "types": ["node", "react/jsx-runtime"],
     "outDir": "lib/cjs"
   },
-  "include": ["src/", "examples/"],
+  "include": ["src/"],
   "exclude": ["node_modules"]
 }

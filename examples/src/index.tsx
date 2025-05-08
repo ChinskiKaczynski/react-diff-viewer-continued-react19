@@ -51,8 +51,8 @@ class Example extends Component<{}, ExampleState> {
     e: MouseEvent<HTMLTableCellElement>,
   ): void => {
     let highlightLine = [id];
-    if (e.shiftKey && this.state.highlightLine.length === 1) {
-      const [dir, oldId] = this.state.highlightLine[0].split('-');
+    if (e.shiftKey && this.state.highlightLine && this.state.highlightLine.length === 1) {
+      const [dir, oldId] = (this.state.highlightLine[0] || '').split('-');
       const [newDir, newId] = id.split('-');
       if (dir === newDir) {
         highlightLine = [];
@@ -305,5 +305,8 @@ class Example extends Component<{}, ExampleState> {
   }
 }
 
-const root = createRoot(document.getElementById('app'));
-root.render(<Example />);
+const appElement = document.getElementById('app');
+if (appElement) {
+  const root = createRoot(appElement);
+  root.render(<Example />);
+}
